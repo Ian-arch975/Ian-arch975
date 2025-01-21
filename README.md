@@ -20,5 +20,5 @@ We welcome contributions to enhance Star ⭐ Fire 🔥 Feel free to fork the rep
 # Support
 For questions, suggestions, or assistance, feel free to reach out to me on WhatsApp or join our channel for regular updates and tips.
 
-[WhatsApp Contact](wa.me/2567262820888)
+[WhatsApp Contact](wa.me/256726282088)
 
