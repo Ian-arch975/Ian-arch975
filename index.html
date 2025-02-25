@@ -82,6 +82,20 @@
             display: block;
             margin: 20px auto;
         }
+
+        /* Music Control */
+        .music-container {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .music-container audio {
+            width: 150px;
+        }
     </style>
 </head>
 <body>
@@ -91,6 +105,14 @@
             <source src="https://files.catbox.moe/etwmgo.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
+    </div>
+
+    <!-- Background Music -->
+    <div class="music-container">
+        <audio controls autoplay loop>
+            <source src="https://files.catbox.moe/55hq7i.mp3" type="audio/mp3">
+            Your browser does not support the audio element.
+        </audio>
     </div>
 
     <header>
