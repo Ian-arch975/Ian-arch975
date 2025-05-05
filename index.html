@@ -1,145 +1,183 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>JOELAN</title>
-    <style>
-        /* Video Background */
-        .video-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            z-index: -1; /* Puts video in the background */
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+  <title>JOELAN</title>
+  <style>
+    /* Video Background */
+    .video-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: -1;
+    }
 
-        .video-container video {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            min-width: 100%;
-            min-height: 100%;
-            width: auto;
-            height: auto;
-            transform: translate(-50%, -50%);
-        }
+    .video-container video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      min-width: 100%;
+      min-height: 100%;
+      transform: translate(-50%, -50%);
+    }
 
-        body {
-            background-color: #333333;
-            color: #007bff;
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
+    body {
+      background-color: #333;
+      color: #007bff;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
 
-        header {
-            text-align: center;
-            padding: 50px;
-            background-color: rgba(34, 34, 34, 0.8); /* Slight transparency */
-        }
+    header {
+      text-align: center;
+      padding: 50px 20px;
+      background-color: rgba(34, 34, 34, 0.8);
+    }
 
-        h1 {
-            font-size: 3em;
-            margin: 0;
-        }
+    h1 {
+      font-size: 3em;
+      margin: 0;
+    }
 
-        section {
-            padding: 20px;
-            margin-top: 20px;
-            background-color: rgba(34, 34, 34, 0.8); /* Keeps text readable */
-        }
+    section {
+      padding: 20px;
+      margin-top: 20px;
+      background-color: rgba(34, 34, 34, 0.8);
+    }
 
-        footer {
-            text-align: center;
-            padding: 20px;
-            background-color: rgba(34, 34, 34, 0.8);
-            color: #888888;
-            position: fixed;
-            width: 100%;
-            bottom: 0;
-        }
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: rgba(34, 34, 34, 0.8);
+      color: #888;
+      position: fixed;
+      width: 100%;
+      bottom: 0;
+    }
 
-        a {
-            color: #007bff;
-            text-decoration: none;
-        }
+    a {
+      color: #007bff;
+      text-decoration: none;
+    }
 
-        a:hover {
-            text-decoration: underline;
-        }
+    a:hover {
+      text-decoration: underline;
+    }
 
-        /* Image Styling */
-        img {
-            width: 150px;
-            height: 150px; /* Makes it a square */
-            object-fit: cover; /* Ensures the image fills the square */
-            border-radius: 10px;
-            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
-            display: block;
-            margin: 20px auto;
-        }
+    img {
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+      display: block;
+      margin: 20px auto;
+    }
 
-        /* Music Control */
-        .music-container {
-            position: fixed;
-            top: 50px;
-            right: 10px;
-            transform: translateY(-50%);/* Centers vertically */
-            background: rgba(0, 0, 0, 0.5);
-            padding: 10px;
-            border-radius: 5px;
-        }
+    .music-container {
+      position: fixed;
+      top: 20px;
+      right: 10px;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 10px;
+      border-radius: 5px;
+    }
 
-        .music-container audio {
-            width: 150px;
-        }
-    </style>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6238564348085765"
-     crossorigin="anonymous"></script>
+    .music-container button {
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      header, section {
+        padding: 30px 15px;
+      }
+
+      h1 {
+        font-size: 2em;
+      }
+
+      .music-container {
+        top: auto;
+        bottom: 100px;
+        right: 10px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <!-- Video Background -->
-    <div class="video-container">
-        <video autoplay muted loop>
-            <source src="https://files.catbox.moe/etwmgo.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-    </div>
+  <!-- Video Background -->
+  <div class="video-container">
+    <video id="bg-video" autoplay muted loop>
+      <source src="https://files.catbox.moe/etwmgo.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+  </div>
 
-    <!-- Background Music -->
-    <div class="music-container">
-        <audio controls autoplay loop>
-            <source src="https://files.catbox.moe/55hq7i.mp3" type="audio/mp3">
-            Your browser does not support the audio element.
-        </audio>
-    </div>
+  <!-- Background Music with Word Button -->
+  <div class="music-container">
+    <button id="music-toggle">Pause Music</button>
+    <audio id="bg-music" loop>
+      <source src="https://files.catbox.moe/55hq7i.mp3" type="audio/mp3" />
+      Your browser does not support the audio element.
+    </audio>
+  </div>
 
-    <header>
-        <h1>JOELAN</h1>
-        <img src="https://files.catbox.moe/4rdkxx.jpg" alt="Spider">
-        <p>Your WhatsApp Bot for a better experience</p>
-    </header>
+  <header>
+    <h1>JOELAN</h1>
+    <img src="https://files.catbox.moe/4rdkxx.jpg" alt="Spider" />
+    <p>Your WhatsApp Bot for a better experience</p>
+  </header>
 
-    <section>
-        <h2>About the WhatsApp Bot</h2>
-        <p>Joelan is a sophisticated WhatsApp bot designed to automate tasks, provide assistance, and integrate with your workflow. Whether you need reminders, information, or custom commands, this bot has got you covered. You can easily connect the bot to your WhatsApp account and get started with simple commands.</p>
-        <h3>Features:</h3>
-        <ul>
-            <li>Antiviewonce</li>
-            <li>Antidelete</li>
-            <li>Auto view and react status</li>
-            <li>Auto read</li>
-            <li>Easy integration with WhatsApp</li>
-        </ul>
-        <p>To learn more or get started, visit <a href="#">our documentation</a>.</p>
-    </section>
+  <section>
+    <h2>About the WhatsApp Bot</h2>
+    <p>Joelan is a sophisticated WhatsApp bot designed to automate tasks, provide assistance, and integrate with your workflow. Whether you need reminders, information, or custom commands, this bot has got you covered.</p>
+    <h3>Features:</h3>
+    <ul>
+      <li>Antiviewonce</li>
+      <li>Antidelete</li>
+      <li>Auto view and react status</li>
+      <li>Auto read</li>
+      <li>Easy integration with WhatsApp</li>
+    </ul>
+    <p>To learn more or get started, visit <a href="#">our documentation</a>.</p>
+  </section>
 
-    <footer>
-        <p>&copy; 2025 Invader Bot. All rights reserved.</p>
-    </footer>
+  <footer>
+    <p>&copy; 2025 Invader Bot. All rights reserved.</p>
+  </footer>
+
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      const music = document.getElementById('bg-music');
+      const button = document.getElementById('music-toggle');
+
+      // Attempt to play music automatically
+      music.play().catch(() => {
+        // Show play button if autoplay fails
+        button.textContent = "Play Music";
+      });
+
+      // Toggle play/pause
+      button.addEventListener('click', () => {
+        if (music.paused) {
+          music.play();
+          button.textContent = "Pause Music";
+        } else {
+          music.pause();
+          button.textContent = "Play Music";
+        }
+      });
+    });
+  </script>
 </body>
 </html>
